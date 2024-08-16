@@ -1,0 +1,41 @@
+// ==UserScript==
+// @name         Journal Viewer
+// @namespace    https://foolishfox.cn
+// @version      1.0.0
+// @description  Optimize the online reading experience of journal articles
+// @author       YiHui-Liu (foolishfox)
+// @match        https://journals.aps.org/*
+// @match        https://www.sciencedirect.com/science/article/pii/*
+// @match        https://www.nature.com/articles/*
+// @icon         https://asset.foolishfox.cn/2024/08/16/66bedd73836f7.png
+// @grant        none
+// @license      GPL-3.0
+// ==/UserScript==
+
+(function () {
+    'use strict';
+
+    // APS
+    let aps_sidebar = document.getElementById("article-sidebar");
+    if (aps_sidebar)
+        aps_sidebar.remove();
+    let aps_content = document.getElementById("article-content");
+    if (aps_content)
+        aps_content.style.width = "100%";
+
+    // Science Direct
+    let sd_sidebar = document.getElementsByClassName("u-display-block-from-md col-lg-6 col-md-8 pad-right u-padding-s-top")[0];
+    if (sd_sidebar)
+        sd_sidebar.remove();
+    let sd_content = document.getElementsByClassName("col-lg-12 col-md-16 pad-left pad-right u-padding-s-top")[0];
+    if (sd_content)
+        sd_content.style.width = "75%";
+
+    // Nature
+    let nature_sidebar = document.getElementsByClassName("c-article-extras u-hide-print")[0];
+    if (nature_sidebar)
+        nature_sidebar.remove();
+    let nature_content = document.getElementsByClassName("c-article-main-column u-float-left js-main-column")[0];
+    if (nature_content)
+        nature_content.style.width = "100%";
+})();
