@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Journal Viewer
 // @namespace    https://foolishfox.cn
-// @version      1.0.0
+// @version      1.1.0
 // @description  Optimize the online reading experience of journal articles
 // @author       YiHui-Liu (foolishfox)
 // @match        https://journals.aps.org/*
