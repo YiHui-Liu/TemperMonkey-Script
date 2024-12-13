@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Journal Viewer
 // @namespace    https://foolishfox.cn
-// @version      1.2.1
+// @version      1.2.2
 // @description  Optimize the online reading experience of journal articles
 // @author       YiHui-Liu (foolishfox)
 // @match        https://journals.aps.org/*
@@ -19,8 +19,10 @@ function remove_science_direct() {
     // Science Direct
     let sd_sidebar = document.getElementsByClassName("u-display-block-from-md col-lg-6 col-md-8 pad-right u-padding-s-top")[0];
     if (sd_sidebar) { sd_sidebar.remove(); }
+    let sd_toc = document.getElementsByClassName("u-display-block-from-lg col-lg-6 u-padding-s-top sticky-table-of-contents")[0];
+    if (sd_toc) { sd_content.style.width = "15%"; }
     let sd_content = document.getElementsByClassName("col-lg-12 col-md-16 pad-left pad-right u-padding-s-top")[0];
-    if (sd_content) { sd_content.style.width = "75%"; }
+    if (sd_content) { sd_content.style.width = "85%"; }
 }
 
 (function () {
