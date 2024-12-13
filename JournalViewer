@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Journal Viewer
 // @namespace    https://foolishfox.cn
-// @version      1.2.0
+// @version      1.2.1
 // @description  Optimize the online reading experience of journal articles
 // @author       YiHui-Liu (foolishfox)
 // @match        https://journals.aps.org/*
@@ -40,7 +40,7 @@ function remove_science_direct() {
     let nature_sidebar = document.getElementsByClassName("c-article-extras u-hide-print")[0];
     if (nature_sidebar) { nature_sidebar.remove(); }
     let nature_content = document.getElementsByClassName("c-article-main-column u-float-left js-main-column")[0];
-    if (nature_contMDPIent) { nature_content.style.width = "100%"; }
+    if (nature_content) { nature_content.style.width = "100%"; }
 
     // MDPI
     let mdpi_help = document.getElementsByClassName("middle-column__help")[0];
