@@ -1,16 +1,27 @@
 // ==UserScript==
 // @name         Journal Viewer
 // @namespace    https://foolishfox.cn
-// @version      1.1.1
+// @version      1.2.0
 // @description  Optimize the online reading experience of journal articles
 // @author       YiHui-Liu (foolishfox)
 // @match        https://journals.aps.org/*
-// @match        https://www.sciencedirect.com/science/article/pii/*
+// @match        https://www.sciencedirect.com/science/article/*
 // @match        https://www.nature.com/articles/*
+// @match        https://www.mdpi.com/*-*/*
 // @icon         https://asset.foolishfox.cn/2024/08/16/66bedd73836f7.png
 // @grant        none
 // @license      GPL-3.0
+// @downloadURL https://update.greasyfork.org/scripts/503800/Journal%20Viewer.user.js
+// @updateURL https://update.greasyfork.org/scripts/503800/Journal%20Viewer.meta.js
 // ==/UserScript==
+
+function remove_science_direct() {
+    // Science Direct
+    let sd_sidebar = document.getElementsByClassName("u-display-block-from-md col-lg-6 col-md-8 pad-right u-padding-s-top")[0];
+    if (sd_sidebar) { sd_sidebar.remove(); }
+    let sd_content = document.getElementsByClassName("col-lg-12 col-md-16 pad-left pad-right u-padding-s-top")[0];
+    if (sd_content) { sd_content.style.width = "75%"; }
+}
 
 (function () {
     'use strict';
@@ -25,15 +36,18 @@
     let aps_sidebar_n = document.getElementById("sidebar-wrapper");
     if (aps_sidebar_n) { aps_sidebar_n.remove(); }
 
-    // Science Direct
-    let sd_sidebar = document.getElementsByClassName("u-display-block-from-md col-lg-6 col-md-8 pad-right u-padding-s-top")[0];
-    if (sd_sidebar) { sd_sidebar.remove(); }
-    let sd_content = document.getElementsByClassName("col-lg-12 col-md-16 pad-left pad-right u-padding-s-top")[0];
-    if (sd_content) { sd_content.style.width = "75%"; }
-
     // Nature
     let nature_sidebar = document.getElementsByClassName("c-article-extras u-hide-print")[0];
     if (nature_sidebar) { nature_sidebar.remove(); }
     let nature_content = document.getElementsByClassName("c-article-main-column u-float-left js-main-column")[0];
-    if (nature_content) { nature_content.style.width = "100%"; }
+    if (nature_contMDPIent) { nature_content.style.width = "100%"; }
+
+    // MDPI
+    let mdpi_help = document.getElementsByClassName("middle-column__help")[0];
+    if (mdpi_help) { mdpi_help.remove(); }
+    let mdpi_main = document.getElementsByClassName("middle-column__main ")[0];
+    if (mdpi_main) { mdpi_main.style.marginRight = 0; }
+
+    // Science Direct
+    setTimeout(remove_science_direct, 2000);
 })();
